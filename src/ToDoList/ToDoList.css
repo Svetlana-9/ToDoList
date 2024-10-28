@@ -1,0 +1,18 @@
+.list {
+  padding: 10px 20px;
+  height: 470px;
+  overflow: auto;
+  overflow-wrap: break-word;
+  .ant-checkbox-wrapper {
+    padding-right: 10px !important;
+  }
+  .ant-list-item-meta-description {
+    color: rgb(91, 93, 92) !important;
+    font-size: 16px !important;
+  }
+  .doneTask .ant-list-item-meta-description{
+    color: rgb(140, 140, 142) !important;
+    text-decoration: line-through;
+  }
+}
+
