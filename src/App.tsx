@@ -3,8 +3,13 @@ import "./App.css";
 import NewTask from "./NewTask/NewTask";
 import ToDoList from "./ToDoList/ToDoList";
 import Settings from "./ListSettings/Settings";
+export interface ITasks {
+  id: string;
+  name: string;
+  isActive: boolean;
+}
 
-const data = [
+const data: ITasks[] = [
   {
     id: "m2swam6s-aq4abp4ynh",
     name: "Написать код",
@@ -27,11 +32,6 @@ const data = [
   },
 ];
 
-export interface ITasks {
-  id: String;
-  name: String;
-  isActive: boolean;
-}
 
 function App() {
   const [filterTasks, setFilterTasks] = useState<ITasks[]>(data);
@@ -42,10 +42,10 @@ function App() {
   );
 
   useMemo(() => {
-    const currentCount = allTasks.filter((task) => !task.isActive).length;
+    const currentCount: number = allTasks.filter((task) => !task.isActive).length;
     setCountFinished(currentCount);
 
-    let copyAllTasks = [...allTasks];
+    let copyAllTasks: ITasks[] = [...allTasks];
     if (filter === "Done") {
       setFilterTasks(copyAllTasks.filter((task) => !task.isActive));
     } else if (filter === "Active") {

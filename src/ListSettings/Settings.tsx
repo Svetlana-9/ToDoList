@@ -11,10 +11,14 @@ interface IPropsSettings {
   setFilter: React.Dispatch<React.SetStateAction<String>>;
 }
 export default function Settings(props: IPropsSettings) {
-  const deteteFinishedTasks = () => {
-    const copyAllTasks = [...props.allTasks];
-    const activeAllTasks = copyAllTasks.filter((task) => task.isActive);
+  
+  const deleteFinishedTasks = () => {
+    const copyAllTasks: ITasks[] = [...props.allTasks];
+    const activeAllTasks: ITasks[] = copyAllTasks.filter(
+      (task) => task.isActive
+    );
     props.setAllTasks(activeAllTasks);
+    console.log(props.allTasks)
   };
 
   return (
@@ -25,6 +29,7 @@ export default function Settings(props: IPropsSettings) {
           className={props.filter === "All" ? "activeButton" : ""}
           type="text"
           onClick={() => props.setFilter("All")}
+          aria-pressed={props.filter === "All"}
         >
           Все
         </Button>
@@ -32,6 +37,7 @@ export default function Settings(props: IPropsSettings) {
           className={props.filter === "Active" ? "activeButton" : ""}
           type="text"
           onClick={() => props.setFilter("Active")}
+          aria-pressed={props.filter === "Active"}
         >
           Активные
         </Button>
@@ -39,6 +45,7 @@ export default function Settings(props: IPropsSettings) {
           className={props.filter === "Done" ? "activeButton" : ""}
           type="text"
           onClick={() => props.setFilter("Done")}
+          aria-pressed={props.filter === "Done"}
         >
           Выполненные
         </Button>
@@ -46,7 +53,7 @@ export default function Settings(props: IPropsSettings) {
       <Button
         type="text"
         onClick={() => {
-          deteteFinishedTasks();
+          deleteFinishedTasks();
         }}
       >
         Удалить все выполненные

@@ -9,24 +9,31 @@ export interface IPropsList {
 }
 
 export default function ToDoList(props: IPropsList) {
+  
   return (
     <div className="list">
       <List
+        data-testid="to-do-list"
         itemLayout="horizontal"
         dataSource={props.filterTasks}
-        renderItem={(item, index) => {
+        renderItem={(item) => {
           return (
-            <List.Item>
-              <Checkbox
-                checked={!item.isActive}
-                onClick={() => {
-                  const copyAllTask = [...props.allTasks];
-                  let index = copyAllTask.findIndex(task => task.id === item.id);
-                  copyAllTask[index].isActive = !item.isActive;
-                  props.setAllTasks(copyAllTask);
-                }}
-              />
+            <List.Item key={item.id}>
               <List.Item.Meta
+                avatar={
+                  <Checkbox
+                    title={item.name}
+                    checked={!item.isActive}
+                    onChange={() => {
+                      const copyAllTask: ITasks[] = [...props.allTasks];
+                      let index: number = copyAllTask.findIndex(
+                        (task) => task.id === item.id
+                      );
+                      copyAllTask[index].isActive = !item.isActive;
+                      props.setAllTasks(copyAllTask);
+                    }}
+                  />
+                }
                 className={!item.isActive ? "doneTask" : ""}
                 description={item.name}
               />
