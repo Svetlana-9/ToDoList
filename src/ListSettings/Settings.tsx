@@ -18,7 +18,6 @@ export default function Settings(props: IPropsSettings) {
       (task) => task.isActive
     );
     props.setAllTasks(activeAllTasks);
-    console.log(props.allTasks)
   };
 
   return (

@@ -23,7 +23,6 @@ export default function Task(props: IPropsTask) {
       props.setAllTasks(copyAllTasks);
       setValue("");
     }
-    console.log(props.allTasks)
   };
 
   return (
