@@ -7,3 +7,8 @@
   font-weight: lighter;
   color: rgb(91, 93, 92);
 }
+
+.app {
+  position: relative;
+  height: 100vh;
+}

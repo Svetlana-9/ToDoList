@@ -1,6 +1,7 @@
 .list {
   padding: 10px 20px;
-  height: 470px;
+  height: calc(100vh - 308px);
+  box-sizing: border-box;
   overflow: auto;
   overflow-wrap: break-word;
   .ant-checkbox-wrapper {
